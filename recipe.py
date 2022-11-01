@@ -1,3 +1,6 @@
+import mysql.connector
+mydb=mysql.connector.connect(host='localhost',user='root',password='',database='food')
+mycursor=mydb.cursor()
 from secrets import choice
 
 
@@ -10,9 +13,18 @@ while True:
     print("5. delete item")
     print("6.exit")
     
-    choice=int(input("enter your choice"))
+    choice=int(input("enter your choice:-"))
     if(choice==1):
         print("ADD ITEM")
+        title=input("enter a food name:::---")
+        description=input("description:::---")
+        prepared_by=input("prepared by:::---")
+        ingredients=input("ingredients:::---")
+        sql="INSERT INTO `recipe`(`title`, `description`, `prepared_by`, `ingredients`) VALUES (%s,%s,%s,%s)"
+        data=(title, description,prepared_by,ingredients)
+        mycursor.execute(sql,data)
+        mydb.commit()
+        print("values entared successfully.......!")
     elif(choice==2):
         print("VIEW ITEM")    
     elif(choice==3):
