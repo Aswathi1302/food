@@ -53,5 +53,10 @@ while True:
         print("Data updated successfully....")
     elif(choice==5) :
         print("DELETE ITEM")
+        foodcode=input("enter a food code:::---")
+        sql="DELETE FROM `recipe` WHERE `foodcode`="+foodcode
+        mycursor.execute(sql)
+        mydb.commit()
+        print("Data deleted successfully..") 
     elif(choice==6):
         break      
