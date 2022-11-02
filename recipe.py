@@ -11,7 +11,8 @@ while True:
     print("3.search item")
     print("4.upadte item")
     print("5. delete item")
-    print("6.exit")
+    print("6. search item by name")
+    print("9.exit")
     
     choice=int(input("enter your choice:-"))
     if(choice==1):
@@ -59,4 +60,12 @@ while True:
         mydb.commit()
         print("Data deleted successfully..") 
     elif(choice==6):
+        print("search a food item  by character") 
+        character=input("enter a character:-")
+        sql="SELECT `foodcode`, `name`, `description`, `preparedby`, `incrediance` FROM `recipe` WHERE `name` LIKE '"+character+"%'"
+        mycursor.execute(sql)
+        result = mycursor.fetchall()
+        for i in result:
+            print(i)    
+    elif(choice==9):
         break      
