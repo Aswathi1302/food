@@ -1,5 +1,5 @@
 import mysql.connector
-mydb=mysql.connector.connect(host='localhost',user='root',password='',database='food')
+mydb=mysql.connector.connect(host='localhost',user='root',password='',database='foodrecipe')
 mycursor=mydb.cursor()
 from secrets import choice
 
@@ -16,12 +16,13 @@ while True:
     choice=int(input("enter your choice:-"))
     if(choice==1):
         print("ADD ITEM")
-        title=input("enter a food name:::---")
+        foodcode=input("enter a food code:::---")
+        name=input("enter a food name:::---")
         description=input("description:::---")
-        prepared_by=input("prepared by:::---")
-        ingredients=input("ingredients:::---")
-        sql="INSERT INTO `recipe`(`title`, `description`, `prepared_by`, `ingredients`) VALUES (%s,%s,%s,%s)"
-        data=(title, description,prepared_by,ingredients)
+        preparedby=input("prepared by:::---")
+        incrediance=input("ingredients:::---")
+        sql="INSERT INTO `recipe`(`foodcode`, `name`, `description`, `preparedby`, `incrediance`) VALUES (%s,%s,%s,%s,%s)"
+        data=(foodcode,name, description,preparedby,incrediance)
         mycursor.execute(sql,data)
         mydb.commit()
         print("values entared successfully.......!")
