@@ -27,7 +27,12 @@ while True:
         mydb.commit()
         print("values entared successfully.......!")
     elif(choice==2):
-        print("VIEW ITEM")    
+        print("VIEW ITEM")  
+        sql="SELECT * FROM `recipe`  "
+        mycursor.execute(sql)
+        result=mycursor.fetchall()
+        for i in result:
+            print(i) 
     elif(choice==3):
         print("SEARCH ITEM")
     elif(choice==4):
