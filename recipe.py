@@ -12,6 +12,7 @@ while True:
     print("4.upadte item")
     print("5. delete item")
     print("6. search item by name")
+    print("7.display count")
     print("9.exit")
     
     choice=int(input("enter your choice:-"))
@@ -66,6 +67,13 @@ while True:
         mycursor.execute(sql)
         result = mycursor.fetchall()
         for i in result:
-            print(i)    
+            print(i)  
+    elif(choice==7):
+        print("Display count of total number of food items prepared by different cook") 
+        sql="SELECT COUNT(*),preparedby FROM `recipe` GROUP BY preparedby" 
+        mycursor.execute(sql)
+        result = mycursor.fetchall()
+        for i in result:
+            print(i) 
     elif(choice==9):
         break      
